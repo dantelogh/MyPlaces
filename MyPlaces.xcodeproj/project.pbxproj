@@ -15,6 +15,7 @@
 		0DB648FA2162856F00CB3264 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DB648F82162856F00CB3264 /* LaunchScreen.storyboard */; };
 		0DB649022162918F00CB3264 /* DetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB649012162918F00CB3264 /* DetailController.swift */; };
 		0DB64905216293DC00CB3264 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DB64904216293DC00CB3264 /* MapKit.framework */; };
+		0DC5FBDB2165223000CA32F2 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC5FBDA2165223000CA32F2 /* Place.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		0DB648FB2162856F00CB3264 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0DB649012162918F00CB3264 /* DetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailController.swift; sourceTree = "<group>"; };
 		0DB64904216293DC00CB3264 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		0DC5FBDA2165223000CA32F2 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 				0DB648F82162856F00CB3264 /* LaunchScreen.storyboard */,
 				0DB648FB2162856F00CB3264 /* Info.plist */,
 				0DB649012162918F00CB3264 /* DetailController.swift */,
+				0DC5FBDA2165223000CA32F2 /* Place.swift */,
 			);
 			path = MyPlaces;
 			sourceTree = "<group>";
@@ -162,6 +165,7 @@
 				0DB648F22162856E00CB3264 /* SecondViewController.swift in Sources */,
 				0DB648EE2162856E00CB3264 /* AppDelegate.swift in Sources */,
 				0DB648F02162856E00CB3264 /* FirstViewController.swift in Sources */,
+				0DC5FBDB2165223000CA32F2 /* Place.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
