@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D341B8E21666B5B00D6EF21 /* ManagerPlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D341B8D21666B5B00D6EF21 /* ManagerPlaces.swift */; };
 		0DB648EE2162856E00CB3264 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB648ED2162856E00CB3264 /* AppDelegate.swift */; };
 		0DB648F02162856E00CB3264 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB648EF2162856E00CB3264 /* FirstViewController.swift */; };
 		0DB648F22162856E00CB3264 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB648F12162856E00CB3264 /* SecondViewController.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0D341B8D21666B5B00D6EF21 /* ManagerPlaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerPlaces.swift; sourceTree = "<group>"; };
 		0DB648EA2162856E00CB3264 /* MyPlaces.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyPlaces.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DB648ED2162856E00CB3264 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0DB648EF2162856E00CB3264 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 				0DB649012162918F00CB3264 /* DetailController.swift */,
 				0DC5FBDA2165223000CA32F2 /* Place.swift */,
 				0DC5FBDE216531A700CA32F2 /* PlaceTourist.swift */,
+				0D341B8D21666B5B00D6EF21 /* ManagerPlaces.swift */,
 			);
 			path = MyPlaces;
 			sourceTree = "<group>";
@@ -169,6 +172,7 @@
 				0DB648F22162856E00CB3264 /* SecondViewController.swift in Sources */,
 				0DB648EE2162856E00CB3264 /* AppDelegate.swift in Sources */,
 				0DB648F02162856E00CB3264 /* FirstViewController.swift in Sources */,
+				0D341B8E21666B5B00D6EF21 /* ManagerPlaces.swift in Sources */,
 				0DC5FBDB2165223000CA32F2 /* Place.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
