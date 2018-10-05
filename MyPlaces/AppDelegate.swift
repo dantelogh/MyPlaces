@@ -13,9 +13,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
+    //NOTA: Método modificado para la PLA 1
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        let manager = ManagerPlaces.shared()
+        //Item de prueba para visualizarlo en la lista y en la vista detalle
+        let place = Place(name: "Test Place", description: "More Info", image_in: nil)
+        
+        manager.append(place)
+        
         return true
     }
 
