@@ -10,6 +10,7 @@ import Foundation
 
 class ManagerPlaces {
     //Propiedades de la clase
+    //Array con objetos de tipo Place
     var places: [Place] = []
     
     //Constructor de la clase

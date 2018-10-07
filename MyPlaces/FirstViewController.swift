@@ -37,12 +37,16 @@ class FirstViewController: UITableViewController {
 
     //Devolver la altura de la fila situada en un posición determinada
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        <#code#>
+        let cgFloat: CGFloat = CGFloat()
+        
+        return cgFloat
     }
     
     //Devolver una instancia de la clase UITableViewCell que pinte la fila seleccionada
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        let uiTableViewCell: UITableViewCell = UITableViewCell()
+        
+        return uiTableViewCell
     }
 
 }

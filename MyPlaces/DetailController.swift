@@ -10,15 +10,20 @@ import UIKit
 
 class DetailController: UIViewController {
 
+    //Necesario para la opción "constraintHeight"...
+    @IBOutlet weak var constraintHeight: NSLayoutConstraint!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        self.constraintHeight.constant = 400
 
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func Close(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
+//    @IBAction func Close(_ sender: Any) {
+//        dismiss(animated: true, completion: nil)
+//    }
     
     /*
     // MARK: - Navigation
