@@ -29,9 +29,9 @@ class FirstViewController: UITableViewController {
     }
 
     //--- Métodos implementados del protocolo ---
-    //Número de elementos del manager
+    //Número de elementos del manager (del array)
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return self.m_provider.getCount()
     }
     
     //Para indicar subsecciones. En nuestro caso no tenemos (devolvemos un 1)
@@ -39,7 +39,7 @@ class FirstViewController: UITableViewController {
         return 1
     }
 
-    //Detectar pulsación de un elemento
+    //Detectar pulsación sobre un elemento
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("Item Seleccionado:")
         print(indexPath.row)
@@ -53,16 +53,12 @@ class FirstViewController: UITableViewController {
 
     //Devolver la altura de la fila situada en un posición determinada
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        //let cgFloat: CGFloat = CGFloat()
-        //return cgFloat
-
         return 100
     }
     
     //Devolver una instancia de la clase UITableViewCell que pinte la fila seleccionada
+    //https://www.ralfebert.de/ios-examples/uikit/uitableviewcontroller/custom-cells/
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //let uiTableViewCell: UITableViewCell = UITableViewCell()
-        //return uiTableViewCell
 
         //Código del ejemplo "TableViewSample"
         var cell: UITableViewCell
@@ -77,7 +73,7 @@ class FirstViewController: UITableViewController {
         label.font = fuente
         label.numberOfLines = 4
         //label.text = "HOLA"
-        label.text = m_provider.getItemAt(position: 0).name
+        label.text = m_provider.getItemAt(position: indexPath.row).name
         label.sizeToFit()
         cell.contentView.addSubview(label)
         

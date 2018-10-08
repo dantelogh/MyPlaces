@@ -84,8 +84,31 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cy0-0P-CJ5">
+                                                <rect key="frame" x="8" y="8" width="359" height="39"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LfM-42-70P">
+                                                <rect key="frame" x="7" y="55" width="105" height="41"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                <state key="normal" title="Close">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="Close:" destination="krj-T9-TV1" eventType="touchUpInside" id="VzA-WT-0aS"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="cy0-0P-CJ5" firstAttribute="leading" secondItem="fcI-xx-Wha" secondAttribute="leading" constant="8" id="IAY-aU-fax"/>
+                                            <constraint firstAttribute="trailing" secondItem="cy0-0P-CJ5" secondAttribute="trailing" constant="8" id="duS-ZE-27K"/>
+                                            <constraint firstItem="cy0-0P-CJ5" firstAttribute="top" secondItem="fcI-xx-Wha" secondAttribute="top" constant="8" id="lPw-Ay-Eci"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -109,6 +132,7 @@
                     </view>
                     <connections>
                         <outlet property="constraintHeight" destination="AZ8-Rz-fsy" id="I5G-y3-pJw"/>
+                        <outlet property="namePlace" destination="cy0-0P-CJ5" id="B8t-MP-0uz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9eU-pn-m58" userLabel="First Responder" sceneMemberID="firstResponder"/>

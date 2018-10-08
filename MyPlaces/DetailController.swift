@@ -12,9 +12,10 @@ class DetailController: UIViewController {
 
     //Necesario para la opción "constraintHeight"...¿?
     @IBOutlet weak var constraintHeight: NSLayoutConstraint!
-    //Pra pintar el Place eniado desde los ViewController
+    //Para pintar el Place enviado desde los ViewController
     var place: Place? = nil
-
+    //Label para visualizar la propiedad "name" del Place seleccionado
+    @IBOutlet weak var namePlace: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,13 +24,15 @@ class DetailController: UIViewController {
         self.constraintHeight.constant = 400
 
         // Do any additional setup after loading the view.
-        print(place?.name ?? "Hola")
+
+        //print(place?.name ?? "Hola")
+        self.namePlace.text = "Name: " + (place?.name)!
     }
     
-    //En la primera versión del esqueleto de la PLA 1 había un botón "Close"
-//    @IBAction func Close(_ sender: Any) {
-//        dismiss(animated: true, completion: nil)
-//    }
+    //Evento click del botón "Close"
+    @IBAction func Close(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     
     /*
     // MARK: - Navigation

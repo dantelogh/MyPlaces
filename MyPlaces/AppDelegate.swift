@@ -17,10 +17,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         let manager = ManagerPlaces.shared()
-        //Item de prueba para visualizarlo en la lista y en la vista detalle
-        let place = Place(name: "Test Place", description: "More Info", image_in: nil)
+        //Items de prueba para visualizarlos en la lista (FirstViewController)
+        //y en la vista detalle (DetailController)
+        let place_1 = Place(name: "Test Place 1", description: "More Info 1", image_in: nil)
+        let place_2 = Place(name: "Test Place 2", description: "More Info 2", image_in: nil)
+        let place_3 = Place(name: "Test Place 3", description: "More Info 3", image_in: nil)
+        let place_4 = Place(name: "Test Place 4", description: "More Info 4", image_in: nil)
         
-        manager.append(place)
+        manager.append(place_1)
+        manager.append(place_2)
+        manager.append(place_3)
+        manager.append(place_4)
         //print("Hola")
 
         return true
