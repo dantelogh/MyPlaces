@@ -14,6 +14,10 @@ import UIKit
 //class FirstViewController: UIViewController {
 class FirstViewController: UITableViewController {
 
+    //Propiedades de la clase
+    let m_provider: ManagerPlaces = ManagerPlaces.shared()
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -39,6 +43,12 @@ class FirstViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("Item Seleccionado:")
         print(indexPath.row)
+        
+        let uiSB: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let dc: DetailController = uiSB.instantiateViewController(withIdentifier: "DetailController") as! DetailController
+
+        dc.place = self.m_provider.getItemAt(position: indexPath.row)
+        present(dc, animated: true, completion: nil)
     }
 
     //Devolver la altura de la fila situada en un posición determinada
@@ -66,7 +76,8 @@ class FirstViewController: UITableViewController {
         let fuente: UIFont = UIFont(name: "Arial", size: 20)!
         label.font = fuente
         label.numberOfLines = 4
-        label.text = "HOLA"
+        //label.text = "HOLA"
+        label.text = m_provider.getItemAt(position: 0).name
         label.sizeToFit()
         cell.contentView.addSubview(label)
         

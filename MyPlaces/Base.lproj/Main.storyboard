@@ -65,7 +65,7 @@
         <!--Detail Controller-->
         <scene sceneID="fJG-35-cDX">
             <objects>
-                <viewController id="krj-T9-TV1" customClass="DetailController" customModule="MyPlaces" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailController" id="krj-T9-TV1" customClass="DetailController" customModule="MyPlaces" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TIA-8E-qwi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
