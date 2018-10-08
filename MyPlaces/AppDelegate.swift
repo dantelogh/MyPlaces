@@ -21,7 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let place = Place(name: "Test Place", description: "More Info", image_in: nil)
         
         manager.append(place)
-        
+        //print("Hola")
+
         return true
     }
 

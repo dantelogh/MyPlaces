@@ -30,7 +30,7 @@
         <!--My Places-->
         <scene sceneID="MvJ-bu-xEL">
             <objects>
-                <tableViewController id="gQH-Zb-7pW" sceneMemberID="viewController">
+                <tableViewController id="gQH-Zb-7pW" customClass="FirstViewController" customModule="MyPlaces" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="29i-PM-YuV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -135,7 +135,7 @@
         <!--My Places-->
         <scene sceneID="hMD-OM-zkC">
             <objects>
-                <viewController id="ryn-jg-QMi" sceneMemberID="viewController">
+                <viewController id="ryn-jg-QMi" customClass="SecondViewController" customModule="MyPlaces" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Mfb-oa-Y2x">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
