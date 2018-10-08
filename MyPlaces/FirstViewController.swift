@@ -41,8 +41,8 @@ class FirstViewController: UITableViewController {
 
     //Detectar pulsación sobre un elemento
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("Item Seleccionado:")
-        print(indexPath.row)
+        //print("Item Seleccionado:")
+        //print(indexPath.row)
         
         let uiSB: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let dc: DetailController = uiSB.instantiateViewController(withIdentifier: "DetailController") as! DetailController
