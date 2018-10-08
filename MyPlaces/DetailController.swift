@@ -10,17 +10,19 @@ import UIKit
 
 class DetailController: UIViewController {
 
-    //Necesario para la opción "constraintHeight"...
+    //Necesario para la opción "constraintHeight"...¿?
     @IBOutlet weak var constraintHeight: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        //Necesario para la opción "constraintHeight"...¿?
         self.constraintHeight.constant = 400
 
         // Do any additional setup after loading the view.
     }
     
+    //En la primera versión del esqueleto de la PLA 1 había un botón "Close"
 //    @IBAction func Close(_ sender: Any) {
 //        dismiss(animated: true, completion: nil)
 //    }
