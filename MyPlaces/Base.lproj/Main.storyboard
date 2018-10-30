@@ -198,6 +198,7 @@
                         <viewLayoutGuide key="safeArea" id="3mF-jZ-N8g"/>
                     </view>
                     <connections>
+                        <outlet property="buttonUpdate" destination="5LC-0A-p8I" id="tRz-9I-khv"/>
                         <outlet property="constraintHeight" destination="AZ8-Rz-fsy" id="I5G-y3-pJw"/>
                         <outlet property="descriptionPlace" destination="0Ea-go-QpH" id="5uv-8O-B5F"/>
                         <outlet property="imagePlace" destination="9Tl-t7-nws" id="w9d-qm-2H8"/>

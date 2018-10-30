@@ -7,8 +7,14 @@
 //
 
 import UIKit
+import MapKit
 
 class DetailController: UIViewController, UITextViewDelegate, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+
+    let m_provider: ManagerPlaces = ManagerPlaces.shared()
+
+    var newPlace: Bool = false
+    var rowPickerView: Int = 0
 
     //Listado de items del PickerView
     let pickerElements = ["Generic place", "Tourist place"]
@@ -23,6 +29,8 @@ class DetailController: UIViewController, UITextViewDelegate, UITextFieldDelegat
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        self.rowPickerView = row
+
         return pickerElements[row]
     }
 
@@ -40,11 +48,13 @@ class DetailController: UIViewController, UITextViewDelegate, UITextFieldDelegat
     @IBOutlet weak var descriptionPlace: UITextField!
     //ScrollView
     @IBOutlet weak var scrollView: UIScrollView!
-
+    //Botón New/Update
+    @IBOutlet weak var buttonUpdate: UIButton!
+    
     //Para la gestión del teclado
-    var keyboardHeight:CGFloat!
+    var keyboardHeight: CGFloat!
     var activeField: UIView!
-    var lastOffset:CGPoint!
+    var lastOffset: CGPoint!
 
     
     override func viewDidLoad() {
@@ -69,10 +79,20 @@ class DetailController: UIViewController, UITextViewDelegate, UITextFieldDelegat
         typePlace.delegate = self
         typePlace.dataSource = self
 
-        //TODO Comprobar que Place no es nil
-        self.namePlace.text = place?.name
-        self.descriptionPlace.text = place?.description
-        self.typePlace.selectRow(place!.type.rawValue, inComponent: 0, animated: true)
+        //Comprobar que Place es nil para New. En caso contrario, será Update
+        if (place == nil) {
+            self.buttonUpdate.setTitle("New", for: UIControl.State.normal)
+            self.newPlace = true
+        }
+        else {
+            self.buttonUpdate.setTitle("Update", for: UIControl.State.normal)
+
+            self.namePlace.text = place?.name
+            self.descriptionPlace.text = place?.description
+            self.typePlace.selectRow(place!.type.rawValue, inComponent: 0, animated: true)
+            
+            self.rowPickerView = place!.type.rawValue
+        }
     }
 
     @objc func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
@@ -143,19 +163,58 @@ class DetailController: UIViewController, UITextViewDelegate, UITextFieldDelegat
 
     //Evento click del botón "Update"
     @IBAction func Update(_ sender: Any) {
-        //TODO actualizar Place
-        print("Update")
+        var newName: String
+        var newDescription: String
+        
+        //TODO Controlar los campos vacíos
+        newName = self.namePlace.text!
+        newDescription = self.descriptionPlace.text!
+        
+        var dataImage: Data? = nil
+        dataImage = self.imagePlace.image?.jpegData(compressionQuality: 1.0)
+
+        //Detectar el tipo de Place
+        //TODO Crear el tipo de objeto: Place o PlaceTourist
+        if (self.rowPickerView == 0) {
+            //Place de tipo "Generic place"
+        }
+        else {
+            //Place de tipo "Tourist place"
+        }
+
+        //Obtener la localización PGS
+        //TODO Añadir las coordenadas GPS
+        //var location: CLLocationCoordinate2D! = ManagerLocation.GetLocation()
+
+        //Detectar si es un New o un Update
+        if (self.newPlace) {
+            //TODO Para probar, siempre instanciamos un Place. ¡Quitar!
+            let place = Place(type: Place.PlacesTypes(rawValue: self.rowPickerView)!, name: newName, description: newDescription, image_in: dataImage)
+            self.m_provider.append(place)
+        }
+        else {
+            //Si es Update NO se permite el cambio de tipo ni la imagen
+            //self.place?.type = Place.PlacesTypes(rawValue: self.rowPickerView)!
+            //self.place?.image = dataImage
+            self.place?.name = self.namePlace.text!
+            self.place?.description = self.descriptionPlace.text!
+        }
+
+        dismiss(animated: true, completion: nil)
     }
 
     //Evento click del botón "Cancel"
     @IBAction func Cancel(_ sender: Any) {
         dismiss(animated: true, completion: nil)
-        
     }
+
     //Evento click del botón "Remove"
     @IBAction func Remove(_ sender: Any) {
-        //TODO Eliminar Place
-        print("Remove")
+        //TODO Refrescar el ListView
+        //TODO Controlar lista vacía
+        self.m_provider.remove(self.place!)
+
+        dismiss(animated: true, completion: nil)
     }
 
     //Evento click del botón "Select Image"
@@ -180,6 +239,7 @@ class DetailController: UIViewController, UITextViewDelegate, UITextFieldDelegat
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated:true, completion: nil)
     }
+
     /*
     // MARK: - Navigation
 
