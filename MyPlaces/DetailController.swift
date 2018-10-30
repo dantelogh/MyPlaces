@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class DetailController: UIViewController, UITextViewDelegate, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     //Listado de items del PickerView
     let pickerElements = ["Generic place", "Tourist place"]
@@ -38,25 +38,108 @@ class DetailController: UIViewController, UIPickerViewDelegate, UIPickerViewData
     @IBOutlet weak var imagePlace: UIImageView!
     //TextField para visualizar/editar la propiedad "description" del Place seleccionado
     @IBOutlet weak var descriptionPlace: UITextField!
+    //ScrollView
+    @IBOutlet weak var scrollView: UIScrollView!
+
+    //Para la gestión del teclado
+    var keyboardHeight:CGFloat!
+    var activeField: UIView!
+    var lastOffset:CGPoint!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        //Soft keyboard Control
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action:#selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
+        
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector:#selector(hideKeyboard), name:UIResponder.keyboardWillHideNotification, object: nil)
+        notificationCenter.addObserver(self, selector:#selector(showKeyboard), name:UIResponder.keyboardWillShowNotification, object: nil)
 
         //Necesario para la opción "constraintHeight"...¿?
         self.constraintHeight.constant = 400
 
         // Do any additional setup after loading the view.
 
+        namePlace.delegate = self
+        descriptionPlace.delegate = self
+        
         typePlace.delegate = self
         typePlace.dataSource = self
 
         //TODO Comprobar que Place no es nil
         self.namePlace.text = place?.name
         self.descriptionPlace.text = place?.description
-        //TODO Seleccionar la opción
         self.typePlace.selectRow(place!.type.rawValue, inComponent: 0, animated: true)
     }
 
+    @objc func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+        activeField = textView
+        lastOffset = self.scrollView.contentOffset
+        
+        return true
+    }
+    
+    @objc func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
+        if (activeField == textView) {
+            activeField?.resignFirstResponder()
+            activeField = nil
+        }
+        
+        return true
+    }
+    
+    @objc func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        activeField = textField
+        lastOffset = self.scrollView.contentOffset
+        
+        return true
+    }
+
+    @objc func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        if (activeField == textField) {
+            activeField?.resignFirstResponder()
+            activeField = nil
+        }
+        
+        return true
+    }
+
+    @objc func showKeyboard(notification: Notification) {
+        if (activeField != nil) {
+            let userInfo = notification.userInfo!
+            let keyboardScreenEndFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+            let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
+            keyboardHeight = keyboardViewEndFrame.size.height
+            
+            let distanceToBottom = self.scrollView.frame.size.height - (activeField?.frame.origin.y)! - (activeField?.frame.size.height)!
+            let collapseSpace = keyboardHeight - distanceToBottom
+
+            if collapseSpace > 0 {
+                self.scrollView.setContentOffset(CGPoint(x: self.lastOffset.x, y: collapseSpace + 10), animated: false)
+                self.constraintHeight.constant += self.keyboardHeight
+            }
+            else {
+                keyboardHeight = nil
+            }
+        }
+    }
+
+    //Hide soft keyboard
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+
+    @objc func hideKeyboard(notification: Notification) {
+        if (keyboardHeight != nil) {
+            self.scrollView.contentOffset = CGPoint(x: self.lastOffset.x, y: self.lastOffset.y)
+            
+            self.constraintHeight.constant -= self.keyboardHeight
+        }
+        keyboardHeight = nil
+    }
 
     //Evento click del botón "Update"
     @IBAction func Update(_ sender: Any) {
@@ -77,8 +160,25 @@ class DetailController: UIViewController, UIPickerViewDelegate, UIPickerViewData
 
     //Evento click del botón "Select Image"
     @IBAction func SelectImage(_ sender: Any) {
-        //TODO Seleccionar la Imagen
-        print("Select Image")
+        let imagePicker = UIImagePickerController()
+
+        imagePicker.delegate = self
+        imagePicker.sourceType = .photoLibrary;
+        imagePicker.allowsEditing = false
+        self.present(imagePicker, animated: true, completion: nil)
+    }
+
+    //Métodos de los protocolos del ImagePicker
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        view.endEditing(true)
+        let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+        imagePlace.contentMode = .scaleAspectFit
+        imagePlace.image = image
+        dismiss(animated:true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated:true, completion: nil)
     }
     /*
     // MARK: - Navigation

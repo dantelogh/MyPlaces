@@ -202,6 +202,7 @@
                         <outlet property="descriptionPlace" destination="0Ea-go-QpH" id="5uv-8O-B5F"/>
                         <outlet property="imagePlace" destination="9Tl-t7-nws" id="w9d-qm-2H8"/>
                         <outlet property="namePlace" destination="UbU-u9-6s2" id="SVg-dp-PGX"/>
+                        <outlet property="scrollView" destination="UqL-Tt-UZC" id="iZK-SY-TVt"/>
                         <outlet property="typePlace" destination="l8i-lQ-ZnT" id="F4P-RN-DsW"/>
                     </connections>
                 </viewController>
@@ -282,6 +283,6 @@
         <image name="second" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="s8b-Ac-K7c"/>
+        <segue reference="UBw-K3-sDO"/>
     </inferredMetricsTieBreakers>
 </document>
