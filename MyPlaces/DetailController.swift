@@ -8,7 +8,23 @@
 
 import UIKit
 
-class DetailController: UIViewController {
+class DetailController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+
+    //Listado de items del PickerView
+    let pickerElements = ["Generic place", "Tourist place"]
+    
+    //Métodos del protocolo del PickerView
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerElements.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickerElements[row]
+    }
 
     //Necesario para la opción "constraintHeight"...¿?
     @IBOutlet weak var constraintHeight: NSLayoutConstraint!
@@ -30,6 +46,9 @@ class DetailController: UIViewController {
         self.constraintHeight.constant = 400
 
         // Do any additional setup after loading the view.
+
+        typePlace.delegate = self
+        typePlace.dataSource = self
 
         //print(place?.name ?? "Hola")
         self.namePlace.text = place?.name
