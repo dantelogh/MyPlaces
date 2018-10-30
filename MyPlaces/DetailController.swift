@@ -14,8 +14,14 @@ class DetailController: UIViewController {
     @IBOutlet weak var constraintHeight: NSLayoutConstraint!
     //Para pintar el Place enviado desde los ViewController
     var place: Place? = nil
-    //Label para visualizar la propiedad "name" del Place seleccionado
-    @IBOutlet weak var namePlace: UILabel!
+    //PickerView para visualizar/editar la propiedad "type" del Place seleccionado
+    @IBOutlet weak var typePlace: UIPickerView!
+    //TextField para visualizar/editar la propiedad "name" del Place seleccionado
+    @IBOutlet weak var namePlace: UITextField!
+    //Image para visualizar/editar la propiedad "image" del Place seleccionado
+    @IBOutlet weak var imagePlace: UIImageView!
+    //TextField para visualizar/editar la propiedad "description" del Place seleccionado
+    @IBOutlet weak var descriptionPlace: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,14 +32,25 @@ class DetailController: UIViewController {
         // Do any additional setup after loading the view.
 
         //print(place?.name ?? "Hola")
-        self.namePlace.text = "Name: " + (place?.name)!
+        self.namePlace.text = place?.name
+        self.descriptionPlace.text = place?.description
     }
     
-    //Evento click del botón "Close"
-    @IBAction func Close(_ sender: Any) {
+    //Evento click del botón "Cancel"
+    @IBAction func Cancel(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
-    
+
+    //Evento click del botón "Update"
+    @IBAction func Update(_ sender: Any) {
+        //TODO actualizar Place
+    }
+
+    //Evento click del botón "Remove"
+    @IBAction func Remove(_ sender: Any) {
+        //TODO Eliminar Place
+    }
+
     /*
     // MARK: - Navigation
 

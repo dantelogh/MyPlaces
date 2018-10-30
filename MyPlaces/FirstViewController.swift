@@ -72,7 +72,6 @@ class FirstViewController: UITableViewController {
         let fuente: UIFont = UIFont(name: "Arial", size: 20)!
         label.font = fuente
         label.numberOfLines = 4
-        //label.text = "HOLA"
         label.text = m_provider.getItemAt(position: indexPath.row).name
         label.sizeToFit()
         cell.contentView.addSubview(label)
