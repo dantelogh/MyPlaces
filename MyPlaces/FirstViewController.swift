@@ -17,7 +17,6 @@ class FirstViewController: UITableViewController {
     //Propiedades de la clase
     let m_provider: ManagerPlaces = ManagerPlaces.shared()
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.

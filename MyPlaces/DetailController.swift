@@ -50,26 +50,36 @@ class DetailController: UIViewController, UIPickerViewDelegate, UIPickerViewData
         typePlace.delegate = self
         typePlace.dataSource = self
 
-        //print(place?.name ?? "Hola")
+        //TODO Comprobar que Place no es nil
         self.namePlace.text = place?.name
         self.descriptionPlace.text = place?.description
+        //TODO Seleccionar la opción
+        self.typePlace.selectRow(place!.type.rawValue, inComponent: 0, animated: true)
     }
-    
-    //Evento click del botón "Cancel"
-    @IBAction func Cancel(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
+
 
     //Evento click del botón "Update"
     @IBAction func Update(_ sender: Any) {
         //TODO actualizar Place
+        print("Update")
     }
 
+    //Evento click del botón "Cancel"
+    @IBAction func Cancel(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+        
+    }
     //Evento click del botón "Remove"
     @IBAction func Remove(_ sender: Any) {
         //TODO Eliminar Place
+        print("Remove")
     }
 
+    //Evento click del botón "Select Image"
+    @IBAction func SelectImage(_ sender: Any) {
+        //TODO Seleccionar la Imagen
+        print("Select Image")
+    }
     /*
     // MARK: - Navigation
 

@@ -14,7 +14,7 @@ import MapKit
 class Place {
     //Tipo enumerador
     //https://docs.swift.org/swift-book/LanguageGuide/Enumerations.html
-    enum PlacesTypes {
+    enum PlacesTypes: Int, Codable {
         case GenericPlace
         case TouristicPlace
     }
