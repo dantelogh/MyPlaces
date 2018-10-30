@@ -200,6 +200,9 @@ class DetailController: UIViewController, UITextViewDelegate, UITextFieldDelegat
             self.place?.description = self.descriptionPlace.text!
         }
 
+        let manager = ManagerPlaces.shared()
+        manager.UpdateObservers()
+
         dismiss(animated: true, completion: nil)
     }
 
@@ -213,6 +216,9 @@ class DetailController: UIViewController, UITextViewDelegate, UITextFieldDelegat
         //TODO Refrescar el ListView
         //TODO Controlar lista vacía
         self.m_provider.remove(self.place!)
+
+        let manager = ManagerPlaces.shared()
+        manager.UpdateObservers()
 
         dismiss(animated: true, completion: nil)
     }

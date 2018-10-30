@@ -12,8 +12,7 @@ import UIKit
 //https://applecoding.com/analisis/programacion-orientada-protocolos-evolucion-swift-2
 //https://applecoding.com/cursos/swift-leccion-8-protocolos
 //class FirstViewController: UIViewController {
-class FirstViewController: UITableViewController {
-
+class FirstViewController: UITableViewController, ManagerPlacesObserver {
     //Propiedades de la clase
     let m_provider: ManagerPlaces = ManagerPlaces.shared()
 
@@ -25,6 +24,14 @@ class FirstViewController: UITableViewController {
         let view: UITableView = (self.view as? UITableView)!;
         view.delegate = self
         view.dataSource = self
+        
+        let manager = ManagerPlaces.shared()
+        manager.addObserver(object: self) 
+    }
+
+    func onPlacesChange() {
+        let view: UITableView = (self.view as? UITableView)!;
+        view.reloadData()
     }
 
     //--- Métodos implementados del protocolo ---

@@ -8,16 +8,30 @@
 
 import Foundation
 
+protocol ManagerPlacesObserver {
+    func onPlacesChange()
+}
+
 class ManagerPlaces {
     //Propiedades de la clase
     //Array con objetos de tipo Place
     var places: [Place] = []
-    
+
+    public var m_observers = Array<ManagerPlacesObserver>()
+
     //Constructor de la clase
     init() {
         
     }
 
+    public func addObserver(object: ManagerPlacesObserver) {
+        
+    }
+    
+    public func UpdateObservers() {
+        
+    }
+    
     //Singleton - Unique instance for all App
     //https://cocoacasts.com/what-is-a-singleton-and-how-to-create-one-in-swift
     //https://theswiftdev.com/2018/05/23/swift-singleton-design-pattern/
